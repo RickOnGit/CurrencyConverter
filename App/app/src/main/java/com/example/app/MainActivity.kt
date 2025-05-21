@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getApiResult() {
-        val API = "http://10.0.2.2:5000/convert?from=$baseCurrency&to=$convertedToCurrency"
+        val API = "http://10.176.134.24:5000/convert?from=$baseCurrency&to=$convertedToCurrency"
         myCoroutineScope.launch {
             try {
                 val apiResult: String = URL(API).readText()

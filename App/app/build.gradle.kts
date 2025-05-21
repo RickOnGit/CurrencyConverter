@@ -52,4 +52,5 @@ dependencies {
     implementation(libs.moshi.kotlin)
     ksp(libs.moshi.kotlin.codegen)
     implementation(libs.kotlinx.coroutines.android)
-}
+    androidTestImplementation("androidx.test.ext:junit:1.1.3")
+    androidTestImplementation("androidx.test.espresso:espresso-core:3.4.0")}
