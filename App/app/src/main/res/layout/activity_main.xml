@@ -66,7 +66,6 @@
                     android:layout_height="wrap_content" />
             </LinearLayout>
 
-            <!-- TextView per visualizzare il tasso di cambio -->
             <TextView
                 android:id="@+id/tv_conversionRate"
                 android:layout_width="wrap_content"

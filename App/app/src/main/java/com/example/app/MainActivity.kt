@@ -63,7 +63,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun getApiResult() {
-        val API = "http://192.168.0.206:5000/convert?from=$baseCurrency&to=$convertedToCurrency"
+        val API = "http://10.176.134.58:5000/convert?from=$baseCurrency&to=$convertedToCurrency"
         myCoroutineScope.launch {
             try {
                 val apiResult: String = URL(API).readText()
@@ -78,7 +78,7 @@ class MainActivity : AppCompatActivity() {
 
                 withContext(Dispatchers.Main) {
                     val conversionRateTextView: TextView = findViewById(R.id.tv_conversionRate)
-                    conversionRateTextView.text = "Conversion Rate: $conversionRate"
+                    conversionRateTextView.text = String.format("Conversion Rate: %s", conversionRate)
 
                     val toEditText: EditText = findViewById(R.id.et_secondConversion)
                     toEditText.setText(convertedValue.toString())
@@ -92,10 +92,10 @@ class MainActivity : AppCompatActivity() {
     private fun spinnerSetup() {
         val spinner: Spinner = findViewById(R.id.spinner_firstConversion)
         val spinner2: Spinner = findViewById(R.id.spinner_secondConversion)
-               ArrayAdapter.createFromResource(
+        ArrayAdapter.createFromResource(
             this,
             R.array.currencies,
-            android.R.layout.simple_spinner_item
+            android.R.layout.simple_spinner_item,
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner.adapter = adapter
@@ -104,7 +104,7 @@ class MainActivity : AppCompatActivity() {
         ArrayAdapter.createFromResource(
             this,
             R.array.currencies2,
-            android.R.layout.simple_spinner_item
+            android.R.layout.simple_spinner_item,
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner2.adapter = adapter
@@ -118,7 +118,7 @@ class MainActivity : AppCompatActivity() {
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
-                id: Long
+                id: Long,
             ) {
                 baseCurrency = parent?.getItemAtPosition(position).toString()
                 getApiResult()
@@ -133,7 +133,7 @@ class MainActivity : AppCompatActivity() {
                 parent: AdapterView<*>?,
                 view: View?,
                 position: Int,
-                id: Long
+                id: Long,
             ) {
                 convertedToCurrency = parent?.getItemAtPosition(position).toString()
                 getApiResult()
@@ -141,4 +141,3 @@ class MainActivity : AppCompatActivity() {
         }
     }
 }
- 
