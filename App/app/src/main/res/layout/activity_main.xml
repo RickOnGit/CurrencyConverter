@@ -35,8 +35,9 @@
                     android:id="@+id/et_firstConversion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:autofillHints=""
                     android:ems="5"
-                    android:hint="From"
+                    android:hint="@string/from"
                     android:inputType="number" />
 
                 <Spinner
@@ -56,8 +57,9 @@
                     android:id="@+id/et_secondConversion"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:autofillHints=""
                     android:ems="5"
-                    android:hint="To"
+                    android:hint="@string/to"
                     android:inputType="number" />
 
                 <Spinner
@@ -71,7 +73,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="20dp"
-                android:text="Conversion Rate: "
+                android:text="@string/conversion_rate"
                 android:textSize="18sp" />
         </LinearLayout>
     </androidx.cardview.widget.CardView>
