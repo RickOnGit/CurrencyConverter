@@ -51,8 +51,9 @@ class MainActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
                 debounceJob?.cancel()
                 debounceJob = myCoroutineScope.launch {
-                    delay(200)
-                    if (!s.isNullOrEmpty()) {
+                    delay(500) //for limiting API calls while typing
+                    val currentInput = s?.toString()
+                    if (!currentInput.isNullOrEmpty()) {
                         withContext(Dispatchers.Main) {
                             getApiResult()
                         }
@@ -60,8 +61,7 @@ class MainActivity : AppCompatActivity() {
                         withContext(Dispatchers.Main) {
                             getApiResult()
                             Toast.makeText(applicationContext, "Type a value", Toast.LENGTH_SHORT).show()
-                        }
-                    }
+                        }}
                 }
             }
 
