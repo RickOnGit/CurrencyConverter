@@ -12,9 +12,7 @@ def convert_currency():
     target_currency = request.args.get("to")
 
     if not source_currency or not target_currency:
-        return jsonify(
-            {"error": "Please provide both 'from' and 'to' currency parameters."}
-        ), 400
+        return jsonify({"error": "Please provide both 'from' and 'to' currency parameters."}), 400
 
     try:
         response = requests.get(EXCHANGE_RATE_API_URL + source_currency)
@@ -23,8 +21,10 @@ def convert_currency():
         if "error" in data:
             return jsonify({"error": data["error"]}), 400
 
-        exchange_rate = data["rates"].get(target_currency)
+        if "rates" not in data:
+            return jsonify({"error": "Invalid response from exchange rate API."}), 502
 
+        exchange_rate = data["rates"].get(target_currency)
         if exchange_rate is None:
             return jsonify({"error": f"Currency '{target_currency}' not found."}), 404
 
@@ -36,4 +36,3 @@ def convert_currency():
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
-    app.run(debug=True)
