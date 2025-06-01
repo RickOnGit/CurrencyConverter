@@ -38,7 +38,7 @@
                     android:autofillHints=""
                     android:ems="5"
                     android:hint="@string/from"
-                    android:inputType="number" />
+                    android:inputType="numberDecimal" />
 
                 <Spinner
                     android:id="@+id/spinner_firstConversion"
@@ -60,7 +60,7 @@
                     android:autofillHints=""
                     android:ems="5"
                     android:hint="@string/to"
-                    android:inputType="number" />
+                    android:inputType="numberDecimal" />
 
                 <Spinner
                     android:id="@+id/spinner_secondConversion"
